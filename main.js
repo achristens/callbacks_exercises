@@ -288,8 +288,41 @@ console.log( 'The unique customers are:', uniqueCustomers );
   - There may be more than 1 'sale' that includes 5 or more items.
   - Individual transactions do not have either `name` or `numItems` properties, we'll have to add them to the output.
 */
-var bigSpenders;
 
+// var listBigSpenders = []
+// transactions.forEach(function(transaction){
+//   if (transaction.type === 'sale' && transaction.items.length > 4 ){
+//     listBigSpenders.push({ name: transaction.name, numItems: transaction.items.length });
+//   }
+//   return listBigSpenders;
+// });
+
+function findBigSales(){
+
+  var findSales = transactions.filter(function(transaction){
+    return transaction.type === 'sale';
+  });
+  //
+  var largeSales = [];
+  //
+  findSales.forEach(function(sale){
+    if (sale.items.length > 4 ){
+      largeSales.push(sale)
+    }
+  });
+  //
+  var bigSales = largeSales.map(function(purchase){
+    spender = {
+      'name': purchase.customer,
+      'numItems': (purchase.items).length
+    }
+    return spender;
+  });
+  return bigSales;
+}
+
+
+var bigSpenders = findBigSales();
 console.log( 'The "big spenders" are:', bigSpenders );
 
 
@@ -302,7 +335,10 @@ console.log( 'The "big spenders" are:', bigSpenders );
   HINT(S):
   - Transactions don't have 'prices', but their 'items' do!
 */
+
+
 var sumSales;
+
 
 console.log( 'The sum of all sales is:', sumSales );
 
