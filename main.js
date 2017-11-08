@@ -337,10 +337,22 @@ console.log( 'The "big spenders" are:', bigSpenders );
 */
 
 
-var sumSales;
+var findSales = transactions.filter(function(transaction){
+  return transaction.type === 'sale';
+});
+
+var firstSale = findSales[0].items;
+
+var sumSales = function(){
+  var total = 0;
+  firstSale.forEach(function(item){
+    total += item.price
+  });
+  return total;
+}
 
 
-console.log( 'The sum of all sales is:', sumSales );
+console.log( 'The sum of all sales is:', sumSales() );
 
 
 // --------------------------------------------------
