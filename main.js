@@ -366,9 +366,24 @@ console.log( 'The sum of all sales is:', sumSales() );
   - Make sure to include 'price' information from *all* purchases.
 */
 
-var sumPurchases;
+var allPurchases = transactions.filter(function(transaction){
+  return transaction.type === 'purchase';
+});
 
-console.log( 'The sum of all purhcases is:', sumPurchases );
+var sumPurchases = function(){
+  total = 0;
+   allPurchases.forEach(function(purchase){
+     var items = purchase.items;
+     items.forEach(function(price){
+       total += price.price;
+     })
+   });
+   return total;
+};
+
+// var sumPurchases;
+
+console.log( 'The sum of all purhcases is:', sumPurchases() );
 
 
 // --------------------------------------------------
