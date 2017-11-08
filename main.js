@@ -211,7 +211,7 @@ console.log( 'The total number of cash sales is:', numCashSales );
   HINT(S):
   - Make sure to exclude any 'sales' made by 'credit'!
 */
-var numCreditPurchases;
+var numCreditPurchases = paymentTypes('credit', 'purchase');
 
 console.log( 'The total number of credit purchases is:', numCreditPurchases );
 
@@ -228,8 +228,19 @@ console.log( 'The total number of credit purchases is:', numCreditPurchases );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - This array is allowed to contain duplicate values.
 */
-var uniqueVendors;
+var vendorArray = [];
 
+function addVendor(){
+  transactions.forEach(function(transaction){
+    if (transaction.vendor !== undefined ){
+      var vendor = transaction.vendor
+      vendorArray.push(vendor)
+    }
+  });
+  return vendorArray;
+}
+
+var uniqueVendors = addVendor();
 console.log( 'The unique vendors are:', uniqueVendors );
 
 
