@@ -256,7 +256,21 @@ console.log( 'The unique vendors are:', uniqueVendors );
   - The assembled array should be made up of strings, not full `transaction` objects.
   - Make sure that the resulting array *does not* include any duplicates.
 */
-var uniqueCustomers;
+
+function addCustomer(){
+  var customerArray = [];
+
+  transactions.forEach(function(transaction){
+    if (transaction.customer !== undefined ){
+      var customer = transaction.customer
+      customerArray.push(customer)
+    }
+  });
+  var filterArray = [...new Set(customerArray)]
+  return (filterArray)
+}
+
+var uniqueCustomers = addCustomer();
 
 console.log( 'The unique customers are:', uniqueCustomers );
 
