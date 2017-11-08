@@ -129,37 +129,36 @@ console.log( 'The total number of transactions is:', totalTransactions );
   HINT(S):
   - Not all transactions are 'sales'.
 */
-// input will take transactions, collect the ones that are type: sale, and count total:
-var numSales = addSales();
+/*
+Hey, welcome to the first question!
 
-function addSales(){
-  counter = 0;
+Here's a breakdown of the question, and some pointers on how to get started!
+- A variable has been declared a few lines above (`numSales`).
+- Just below, the contents of the `numSales` variable are logged to the console.
+- Your job is to assign the variable to the correct value (in this case: the total number of sales) *BEFORE* it is logged out.
+- You can do this by:
+- Adding an `=` sign (we are *assigning* something after all)
+- Starting with the `transactions` variable (see the example question);
+- Adding one or more methods to transform/extract the value we're looking for.
+- If your solution is correct, `numSales` should be equal to 5.
+
+You can solve the remaining questions in the same way!
+
+P.S.
+The breakdown above takes up a lot of space, feel free to move it to the top or bottom of the file!
+*/
+function tallyTransactions(type){
+  var counter = 0;
   transactions.forEach(function(transaction){
-    if (transaction.type === 'sale') {
-      counter ++
+    if (transaction.type === type ) {
+      counter ++;
     }
   });
   return counter;
 }
 
-/*
-  Hey, welcome to the first question!
+var numSales = tallyTransactions('sale');
 
-  Here's a breakdown of the question, and some pointers on how to get started!
-    - A variable has been declared a few lines above (`numSales`).
-    - Just below, the contents of the `numSales` variable are logged to the console.
-    - Your job is to assign the variable to the correct value (in this case: the total number of sales) *BEFORE* it is logged out.
-    - You can do this by:
-      - Adding an `=` sign (we are *assigning* something after all)
-      - Starting with the `transactions` variable (see the example question);
-      - Adding one or more methods to transform/extract the value we're looking for.
-      - If your solution is correct, `numSales` should be equal to 5.
-
-  You can solve the remaining questions in the same way!
-
-  P.S.
-  The breakdown above takes up a lot of space, feel free to move it to the top or bottom of the file!
-*/
 
 console.log( 'The total number of sales is:', numSales );
 
@@ -170,7 +169,8 @@ console.log( 'The total number of sales is:', numSales );
 /*
   Calculate the total number of 'purchases'.
 */
-var numPurchases;
+
+var numPurchases = tallyTransactions('purchase');
 
 console.log( 'The total number of purchases is:', numPurchases );
 
@@ -184,7 +184,20 @@ console.log( 'The total number of purchases is:', numPurchases );
   HINT(S):
   - Don't forget that 'purchases' can also be made in 'cash'!
 */
-var numCashSales;
+// input: check all transacations that are type: SALES and paymentMethod: CASH, return total
+// where tallyTransactions('sale') + paymentTypes('cash')
+
+function paymentTypes(payment, transType){
+  var counter = 0;
+  transactions.forEach(function(transaction){
+    if (transaction.type === transType && transaction.paymentMethod === payment){
+      counter ++;
+    }
+  });
+  return counter;
+}
+
+var numCashSales = paymentTypes('cash', 'sale');
 
 console.log( 'The total number of cash sales is:', numCashSales );
 
