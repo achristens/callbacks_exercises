@@ -399,7 +399,19 @@ console.log( 'The sum of all purhcases is:', sumPurchases() );
   HINT(S):
   - Unlike 'QUESTION 08' and 'QUESTION 09', here we're interested in both 'sale' and 'purchase' transactions.
 */
-var netProfit;
+
+var sumSales = function(){
+  total = 0;
+   findSales.forEach(function(sale){
+     var items = sale.items;
+     items.forEach(function(price){
+       total += price.price;
+     })
+   });
+   return total;
+};
+
+var netProfit = sumSales() + sumPurchases();
 
 console.log( 'The net profit is:', netProfit );
 
