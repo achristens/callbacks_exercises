@@ -129,7 +129,18 @@ console.log( 'The total number of transactions is:', totalTransactions );
   HINT(S):
   - Not all transactions are 'sales'.
 */
-var numSales;
+// input will take transactions, collect the ones that are type: sale, and count total:
+var numSales = addSales();
+
+function addSales(){
+  counter = 0;
+  transactions.forEach(function(transaction){
+    if (transaction.type === 'sale') {
+      counter ++
+    }
+  });
+  return counter;
+}
 
 /*
   Hey, welcome to the first question!
